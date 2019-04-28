@@ -7,16 +7,22 @@ void CeasarDecrypt(char* text); // Fuction prototype for Decryption
 
 int main()
 {
- char text[100];//Defining characters array size for user input
- int key; //Assinging integer variable type for shifting
- int de; //Assinging interger variable type fro Encrypt or Decrypt option
+int key; //Assinging integer variable type for shifting
+int de; //Assinging interger variable type fro Encrypt or Decrypt option
  
- printf("Enter text: "); //Printing to ask user
- scanf("%s",text); //Getting user "string" input and storing at "text" variable
+FILE *input; //assigning file pointer
+input = fopen("rotational.txt", "r");
+char text[1000]; //Defining characters array size for user input
+
+if(input == NULL) {
+perror("fopen()");
+return 0;
+}
  
- printf("To Encrypt, enter '1' (or) To Decrypt, enter '2': ");//Asking option for En or De cryption
- scanf("%d", &de);
- 
+
+ while(!feof(input)){
+     fgets(text, 1000, input);
+ }
  while(de != 1 && de != 2){ // The loop if user's wrong input
  printf("\nInvalid input\nTo quit, enter '0' (or) To Encrypt, enter '1' (or) To decrypt, enter '2': ");
  scanf("%d", &de); 
